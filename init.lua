@@ -2,6 +2,7 @@ require("plugins")
 require("settings")
 require("lsp")
 require("keybinds")
+require("tabcompletion")
 
 require "paq" {
   'savq/paq-nvim';                                  -- Package Manager

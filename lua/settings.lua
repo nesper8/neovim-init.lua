@@ -3,7 +3,7 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.syntax = 'enabled'
 vim.wo.foldmethod = 'marker'
 vim.wo.colorcolumn = '100'
---vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = 'menu,menuone,noselect'
 
 vim.opt.showmatch = true
 vim.opt.splitright = true

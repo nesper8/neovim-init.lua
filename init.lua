@@ -30,5 +30,7 @@ require "paq" {
   'kyazdani42/nvim-tree.lua';                       -- Tree
   'kyazdani42/nvim-web-devicons';                   -- Icons
 
+  'lukas-reineke/indent-blankline.nvim';            -- Indentlines
+
   'iamcco/markdown-preview.nvim';                   -- Markdown Preview
 }

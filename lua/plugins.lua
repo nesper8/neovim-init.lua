@@ -142,5 +142,11 @@ require('nvim-tree').setup {
 }
 vim.g.nvim_tree_indent_markers = 1
 
+--plugin: indent_blankline
+require("indent_blankline").setup {
+  space_char_blankline = " ",
+  show_current_context = true,
+}
+
 -- plugin: markdown-preview.nvim
 vim.g.mkdp_auto_start = 1

@@ -12,7 +12,7 @@ require('onedark').setup {
 require('FTerm').setup {
   border = 'single',
   dimensions = {
-    height = 0.8,
+    height = 0.9,
     width = 0.9,
   },
 }

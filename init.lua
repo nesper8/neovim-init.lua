@@ -1,7 +1,3 @@
--- source settings
-require('settings')
-require('plugins')
-
 -- initialise lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -22,14 +18,30 @@ vim.g.localleader = " "
 
 -- plugins
 require('lazy').setup({
-	{ 'folke/which-key.nvim', lazy = true }, -- keybinds
+	{ -- shows keybinds
+	  'folke/which-key.nvim',
+	  config = function()
+	    vim.o.timeout = true
+	    vim.o.timeoutlen = 300
+	    require('which-key').setup({})
+	  end,
+	},
 	{ 'folke/neoconf.nvim', cmd = 'Neoconf' },
 	{ 'nvim-neorg/neorg', ft = 'neorg', config = true }, -- Org for Nvim
 	{ 'nvim-lua/plenary.nvim' },
 
 	-- Treesitter and Extensions
-	{ 'nvim-treesitter/nvim-treesitter' },
-	{ 'windwp/nvim-autopairs', dependencies = 'nvim-treesitter/nvim-treesitter' },
+	{
+	  'nvim-treesitter/nvim-treesitter',
+	  dependencies = {
+	    'nvim-treesitter/nvim-treesitter-textobjects',
+	  },
+	  config = function()
+	  pcall(require('nvim-treesitter.install').update { with_sync = true })
+	  end,
+	},
+	{ 'windwp/nvim-autopairs' },
+	{ 'numToStr/Comment.nvim', opts = {} },
 
   -- LSP and completion
   {
@@ -38,9 +50,6 @@ require('lazy').setup({
           -- LSP Installer
           'williamboman/mason.nvim',
           'williamboman/mason-lspconfig.nvim',
-
-          -- Status Updates
-          'j-hui/fidget.nvim',
 
           -- Additional Stuff
           'folke/neodev.nvim',
@@ -56,27 +65,69 @@ require('lazy').setup({
   },
 
   -- UI Stuff
-	{ 'stevearc/dressing.nvim', event = 'VeryLazy' },
-	{ 'lukas-reineke/indent-blankline.nvim' },
+	{
+	  'lukas-reineke/indent-blankline.nvim',
+	  opts = {
+	    char = '┊',
+	    show_trailing_blankline_indent = false,
+	  }
+	},
 	{
 	  'utilyre/barbecue.nvim',
 	  name = 'barbecue',
 	  version = '*',
 	  dependencies = {
       'SmiteshP/nvim-navic',
-      'nvim-tree/nvim-web-devicons',
+      'romgrk/barbar.nvim',
 	  },
 	},
-	{ 'nvim-lualine/lualine.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
-	{ 'gelguy/wilder.nvim' },
+	{
+	  'navarasu/onedark.nvim',
+	  priority = 1000,
+	  config = function()
+	    vim.cmd.colorscheme 'onedark'
+	  end,
+	},
+	{
+	  'nvim-lualine/lualine.nvim', dependencies = 'nvim-tree/nvim-web-devicons',
+	  opts = {
+	    options = {
+	      icons_enabled = false,
+	    }
+	  }
+	},
+	{
+	  'folke/noice.nvim',
+	  dependencies = {
+	    'MunifTanjim/nui.nvim',
+	    'rcarriga/nvim-notify',
+	  },
+	},
+	{ 'goolord/alpha-nvim' },
 
 	-- Git Stuff
 	{ 'lewis6991/gitsigns.nvim' },
 	{ 'TimUntersberger/neogit' },
 
+	-- Telescope
+	{ 'nvim-telescope/telescope.nvim' },
+	{ 'nvim-telescope/telescope-fzf-native.nvim' },
+
+  -- Tree
+  { 'nvim-tree/nvim-tree.lua', version = 'nightly' },
+
 	-- Some other useful stuff
-	{ 'tpope/vim-sleuth' }
+	{ 'tpope/vim-sleuth' },
+	{ 'iamcco/markdown-preview.nvim' }
 })
+
+-- source plugins
+require('plugins')
+require('completion')
+require('languages')
+require('settings')
+require('tree')
+require('keymaps')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

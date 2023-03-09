@@ -1,18 +1,18 @@
 -- general
 vim.opt.wrap = false
 vim.opt.cursorline = true
-vim.wo.colorcolumn = '100'
-vim.opt.cmdheight = 2
-vim.opt.showtabline = 2
 vim.opt.showmode = false
 vim.opt.number = true
 vim.opt.mouse = 'a'
+vim.opt.updatetime = 200
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 vim.o.clipboard = 'unnamedplus'
+vim.wo.colorcolumn = '100'
 
--- theme
-vim.cmd([[colorscheme habamax]])
+-- netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- undo
 vim.o.undofile = true

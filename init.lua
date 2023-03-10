@@ -82,10 +82,42 @@ require('lazy').setup({
 	  },
 	},
 	{
-	  'navarasu/onedark.nvim',
+	  'marko-cerovac/material.nvim',
 	  priority = 1000,
 	  config = function()
-	    vim.cmd.colorscheme 'onedark'
+	    vim.cmd.colorscheme 'material'
+	    vim.g.material_style = 'deep ocean'
+      require('material').setup({
+        contrast = {
+          terminal = true,
+          sidebars = true,
+          floating = true,
+          cursor_line = true,
+          non_current_windows = true,
+        },
+
+        styles = {
+          comments = { [[ italics = true ]] },
+          strings = { [[ bold = true ]] },
+          keywords = { [[ underline = true ]] },
+          functions = { [[ bold = true, undercurl = true ]] },
+        },
+
+        plugins = {
+          'indent-blankline',
+          'gitsigns',
+          'neogit',
+          'neorg',
+          'nvim-cmp',
+          'nvim-tree',
+          'nvim-navic',
+          'nvim-web-devicons',
+          'telescope',
+          'which-key',
+        },
+
+        lualine_style = 'stealth',
+      })
 	  end,
 	},
 	{
@@ -103,7 +135,17 @@ require('lazy').setup({
 	    'rcarriga/nvim-notify',
 	  },
 	},
+
 	{ 'goolord/alpha-nvim' },
+
+	{
+	  'xiyaowong/nvim-transparent',
+	  config = function()
+	  require('transparent').setup({
+	      enable = true,
+	    })
+	  end,
+	},
 
 	-- Git Stuff
 	{ 'lewis6991/gitsigns.nvim' },

@@ -1,11 +1,11 @@
 -- Better Experience
 vim.keymap.set( { 'n', 'v' }, '<Space>', '<Nop>', { silent = true } )
 
--- Tree
-vim.keymap.set( 'n', '<leader>t', ':NvimTreeToggle<CR>', { silent = true } )
+-- Toggles
+vim.keymap.set( 'n', '<leader>tn', ':NvimTreeToggle<CR>', { desc = "[T]oggle [N]eo Tree", silent = true } )
 
 -- Neogit
-vim.keymap.set( 'n', '<leader>ng', ':Neogit<CR>', { silent = true } )
+vim.keymap.set( 'n', '<leader>ng', ':Neogit<CR>', { desc = '[N]eo[G]it', silent = true } )
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -30,4 +30,11 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
+-- Notify
+vim.keymap.set('n', '<leader>nt', ':Telescope notify<CR>' , { desc = '[N]o[t]ifications', silent = true } )
+
+-- Terminal
+vim.keymap.set('n', '<leader>tt', '<CMD>lua require("FTerm").toggle()<CR>', { desc = '[T]oggle [T]erminal', silent = true } )
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { silent = true } ) -- Return to normal mode
+vim.keymap.set('t', 'q', '<C-\\><C-n>', { silent = true } )
 

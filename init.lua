@@ -158,6 +158,9 @@ require('lazy').setup({
   -- Tree
   { 'nvim-tree/nvim-tree.lua', version = 'nightly' },
 
+  -- Terminal
+  { 'numToStr/FTerm.nvim' },
+
 	-- Some other useful stuff
 	{ 'tpope/vim-sleuth' },
 	{ 'iamcco/markdown-preview.nvim' }

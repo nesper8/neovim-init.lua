@@ -156,5 +156,3 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
--- neodev
-require('neodev').setup({})

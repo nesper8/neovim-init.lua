@@ -5,8 +5,9 @@ vim.opt.showmode = false
 vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.updatetime = 200
-vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
+vim.o.hidden = true
+vim.o.completeopt = 'menuone,noselect'
 vim.o.clipboard = 'unnamedplus'
 vim.wo.colorcolumn = '100'
 

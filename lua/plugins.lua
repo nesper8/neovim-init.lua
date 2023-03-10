@@ -76,6 +76,14 @@ require('gitsigns').setup {
 local neogit = require('neogit')
 neogit.setup {}
 
+-- notify
+require('notify').setup({
+  background_colour = '#000000',
+  render = 'compact',
+  stages = 'slide',
+  fps = 30,
+})
+
 -- noice
 require("noice").setup({
   lsp = {
@@ -110,6 +118,16 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+
+-- Terminal
+require('FTerm').setup({
+  border = 'single',
+  hl = 'Normal',
+  dimensions = {
+    height = 0.8,
+    width = 0.8,
+  }
+})
 
 -- alpha
 require'alpha'.setup(require'alpha.themes.startify'.config)
